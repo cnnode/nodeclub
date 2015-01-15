@@ -1,0 +1,47 @@
+<%
+  var ads = [
+    {
+      href: 'http://www.jiankongbao.com/',
+      label: 'jiankongbao',
+      img_src: '/public/images/jiankongbao-banner-3.jpg',
+    },
+    {
+      href: 'https://coding.net/marketing/codeinsight?hmsr=https%3A%2F%2Fcnodejs.org%2F&hmmd=%E5%9B%BE%E7%89%87%E5%B9%BF%E5%91%8A&hmpl=CodeInsight&hmkw=&hmci=',
+      label: 'coding-net',
+      img_src: '//dn-cnode.qbox.me/Fllgy5-eqnx65aWxthQVdYZVDtcE',
+    },
+    {
+      href: 'https://campaign.gitcafe.com/hackspring2015-index',
+      label: 'gitcafe',
+      img_src: '//dn-cnode.qbox.me/FtzQQ8NoVBOkgC7JY0rd-q1HCQBH',
+    },
+    //{
+    //  href: 'http://www.qiniu.com/event/8/beijing/?utm_campaign=sjr8&utm_source=cnodejs',
+    //  label: 'qiniu-event',
+    //  img_src: '/public/images/qiniu-banner-1.jpg',
+    //},
+    {
+      href: 'https://talk.ai/?s=cnodejs',
+      label: 'teambition',
+      img_src: '//dn-cnode.qbox.me/FsJ2QW9zAHLvrPgC767PvuMWBkRQ',
+    },
+  ];
+
+    var randomNum = (new Date()).getHours() % ads.length;
+
+    ads = ads.slice(randomNum).concat(ads.slice(0, randomNum));
+%>
+<div class='panel'>
+  <div class='inner ads'>
+
+    <% ads.forEach(function (adObj, idx) { %>
+      <% if (idx !== 0) { %>
+        <div class="sep10"></div>
+      <% } %>
+      <a href="<%-adObj.href%>" target="_blank" class="banner sponsor_outlink"
+    data-label="<%=adObj.label%>">
+        <img src="<%- staticFile(adObj.img_src) %>">
+      </a>
+    <% }) %>
+  </div>
+</div>
